@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">       
     <title>Password Gen</title>
     <h1>Password Generator</h1>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -10,30 +12,67 @@
 </head>
 
 
-</head>   
 
-            
 
 
 <body> 
-
-
-    <h2>Generate a Password</h2>
-
-
-    <section>
-
-
-    </section>
-
-
-    <button class="button">Generate Password</button>
-
-
-
     
+    
+    <h2>Generate a Password</h2>
+    
+    <main>  
+        
+        <section>
+            
+            
+            
+            How many Numbers (max 128): <input type="number" id="charNumber" value="10" min="8" max="128" /><br/>
 
+            Your Password:  <textarea rows="4 " id="yourpassword" display="flex"></textarea>            
+            
+            
+        </section>
+        
+        
+        <button id="generate">Generate Password</button>
+        
 
+    </main>
+    
+    
+    
+    
+    
     
 </body>
+
+<script>
+
+
+var char = 'abcdefghijklmnopqustuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*123456789'; 
+
+var charNumber = document.getElementById("charNumber");
+var yourpassword = document.getElementById("yourpassword");
+var submit = document.getElementById("generate");
+
+submit.addEventListener("click",function(e){
+    var characters = char;
+    yourpassword.value = password(charNumber.value, characters);
+});
+
+
+function password (length,characters)
+{var pwd = '';
+
+for (var i = 0; i <= length; i++) {
+    pwd += characters.charAt(Math.floor(Math.random() * characters.length));
+    
+}
+
+return pwd;
+}
+
+
+</script>
+
 </html>
